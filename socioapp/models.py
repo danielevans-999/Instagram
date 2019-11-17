@@ -16,7 +16,13 @@ class Image(models.Model):
         
     @classmethod    
     def update_caption(cls,id,new_caption):
-        cls.objects.filter(id = id ).update(image_caption = new_caption)
+        cls.objects.filter(pk = id ).update(image_caption = new_caption)
+        new_caption_object = cls.objects.get(image_caption=new_caption)
+        new_caption = new_caption_object.image_caption
+        return new_caption
+    
+    
+        
         
 
     
@@ -32,5 +38,8 @@ class Profile(models.Model):
     
     @classmethod   
     def update_bio(cls,id,new_bio):
-        cls.objects.filter(id = id).update(bio=new_bio)
-        pass
+        cls.objects.filter(pk = id).update(bio=new_bio)
+        new_bio_object = cls.objects.get(bio = new_bio)
+        new_bio = new_bio_object.bio
+        return new_bio
+        
