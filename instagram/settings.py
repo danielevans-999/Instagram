@@ -53,7 +53,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'instagram.urls'
 
 TEMPLATES = [
-    {SocioappConfig
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
