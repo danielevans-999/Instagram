@@ -14,6 +14,10 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
         
+    @classmethod    
+    def update_caption(cls,id,new_caption):
+        cls.objects.filter(id = id ).update(image_caption = new_caption)
+        
 
     
 class Profile(models.Model):
@@ -25,6 +29,8 @@ class Profile(models.Model):
         
     def delete_profile(self):
         self.delete()
-        
-    def update_bio(self):
+    
+    @classmethod   
+    def update_bio(cls,id,new_bio):
+        cls.objects.filter(id = id).update(bio=new_bio)
         pass
