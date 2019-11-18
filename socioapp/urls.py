@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     
-    url(r'^$',views.home,name='home')
+    url(r'^$',views.home,name='home'),
+    url(r'^image/$', views.image_upload,name='upload'),
 ]
 
 if settings.DEBUG:

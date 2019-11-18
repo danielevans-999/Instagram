@@ -1,12 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     image_name = models.CharField(max_length=50)
     image_caption = models.CharField(max_length=50)
-    profile = models.ForeignKey('Profile',on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
     comments = models.CharField(max_length=50)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     
     def save_image(self):
         self.save()
@@ -29,6 +30,7 @@ class Image(models.Model):
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to='images')
     bio = models.TextField()
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     
     def save_profile(self):
         self.save()
