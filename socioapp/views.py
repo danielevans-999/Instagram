@@ -23,11 +23,13 @@ def image_upload(request):
         return render(request,'socioapp/upload.html', {"form":form})
     
 def profile_info(request):
-    profile_info = Profile.objects.first()
+    
+    current_user=request.user
+    profile_info = Profile.objects.filter(user=current_user).first()
     posts =  request.user.image_set.all()
     
     
-    return render(request,'socioapp/profile.html',{"images":posts,"profile":profile_info})
+    return render(request,'socioapp/profile.html',{"images":posts,"profile":profile_info,"current_user":current_user})
         
 def profile_edit(request):
     current_user = request.user
