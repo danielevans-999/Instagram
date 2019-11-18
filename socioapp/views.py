@@ -19,3 +19,8 @@ def image_upload(request):
     else:
         form = ImageUploadForm()
         return render(request,'socioapp/upload.html', {"form":form})
+    
+def profile_info(request):
+    posts =  request.user.image_set.all()
+    
+    return render(request,'socioapp/profile.html',{"images":posts})
