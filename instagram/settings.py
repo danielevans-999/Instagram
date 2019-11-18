@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'socioapp.apps.SocioappConfig',
     'bootstrap4',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

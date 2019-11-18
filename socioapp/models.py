@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
@@ -29,8 +30,13 @@ class Image(models.Model):
     
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to='images')
-    bio = models.TextField()
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    bio = HTMLField()
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+    
+    
+    def __str__(self):
+        
+        return self.profile_photo.url
     
     def save_profile(self):
         self.save()

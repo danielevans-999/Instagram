@@ -2,3 +2,7 @@ body{
     
     background-color: #4444;
 }
+
+.user{
+    text-transform: capitalize;
+}

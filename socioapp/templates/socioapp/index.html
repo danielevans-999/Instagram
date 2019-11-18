@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-sm-6 col-md-6">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdi1EBkMVS1MUTOL10mnlXG5Mxu65KufkPtlpfCuizq8UZIwJKaw&s"  height="300px" width="300px" alt="">
         </div>
@@ -13,15 +13,38 @@
             
         </div>
 
-    </div>
-    <div class="row mt-2">
-       
+    </div> -->
+    <a href="{%url 'upload'%}" class="btn btn-outline-info btn-sm">upload</a>
+    <div class="row">
+
         {% for image in images %}
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <img src="{{image.image.url}}" alt="" class="img-thumbnail img-responsive img-fluid">
+        <div class=" col-md-3 ">
+
         </div>
-        {% endfor %}
-        
+        <div class=" col-md-6 ">
+            <div class="card mb-2" style="width: 45rem;">
+                <div class="card-header">
+
+                </div>
+                <img src="{{image.image.url}}" alt="" class="img-thumbnail img-responsive img-fluid">
+                <!-- <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Like</a>
+                </div> -->
+                <div class="card-footer">
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class=" col-md-3 "></div>
     </div>
+    {% endfor %}
+
 </div>
+
 {% endblock %}
