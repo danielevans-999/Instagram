@@ -1,5 +1,5 @@
 {% extends "registration/base.html"%}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-sm" value="Login">
                         </div>
-                        <p>Don't have an account ? <a href="register/">Sign Up</a></p>
+                        <p>Don't have an account ? <a href="/accounts/register">Sign Up</a></p>
                         <p><a href="#">Forgot Password ?</a></p>
                         <input type="hidden" name="next" value="{{next}}">
                     </form>

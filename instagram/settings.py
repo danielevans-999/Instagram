@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'socioapp.apps.SocioappConfig',
-    'bootstrap3',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
