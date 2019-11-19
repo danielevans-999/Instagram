@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from . forms import ImageUploadForm,ImageProfileForm,CommentForm
 from .models import *
 from django.contrib.auth.decorators import login_required
+from vote.managers import  VotableManager
+
+likes = VotableManager()
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -73,8 +76,20 @@ def comments(request,id):
     number = len(comments   )
     
     return render(request,'socioapp/comments.html',{"comments":comments,"number":number})        
-            
+
+@login_required (login_url='/accounts/register/')          
+def like_images(request,id):
+    image =  Image.get_single_photo(id)
+    user = request.user
+    user_id = user.id
+    
+    if user.is_authenticated:
+        uplike = image.likes.up(user_id)
+        image.likes = image.likes.count()
+        image.save()
         
+    return redirect('home')
+    
     
     
     
