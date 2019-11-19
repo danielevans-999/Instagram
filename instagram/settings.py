@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'socioapp.apps.SocioappConfig',
     'bootstrap4',
     'tinymce',
+    'vote',
 ]
 
 MIDDLEWARE = [
