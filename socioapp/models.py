@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from vote.models import VoteModel
-from vote.managers import VotableManager
+
 
 class Image(VoteModel,models.Model):
     image = models.ImageField(upload_to='images/')

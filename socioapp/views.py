@@ -4,7 +4,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from vote.managers import  VotableManager
 
-likes = VotableManager()
+votes = VotableManager()
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -84,8 +84,8 @@ def like_images(request,id):
     user_id = user.id
     
     if user.is_authenticated:
-        uplike = image.likes.up(user_id)
-        image.likes = image.likes.count()
+        uplike = image.votes.up(user_id)
+        image.likes = image.votes.count()
         image.save()
         
     return redirect('home')
