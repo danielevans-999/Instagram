@@ -7,11 +7,11 @@ class ImageTestClass(TestCase):
     '''
     
     def setUp(self):
-        self.profile_one = Profile(profile_photo='images/mine.jpg',bio='Currently doing datascience in moringa')
-        self.profile_one.save_profile()
-        self.image_one = Image(image='images/lagoon.jpeg',image_name='dan', image_caption='lacasa de papel',comments='aaaaawww!',likes=40, id=1,profile=self.profile_one)
+        
+        self.image_one = Image(image='images/lagoon.jpeg',image_name='dan', image_caption='lacasa de papel',likes=40, id=1,user_id=3)
         
     def test_instance(self):
+        Image.objects.all().delete()
         self.assertTrue(isinstance(self.image_one,Image)) 
 
     def test_save_method(self):
@@ -32,6 +32,12 @@ class ImageTestClass(TestCase):
         done = self.image_one.update_caption(self.image_one.id,new_caption)
         self.assertEqual(done,new_caption)
         
+    def tearDown(self):
+        Image.objects.all().delete()   
+    
+       
+        
+        
 class ProfileTestClass(TestCase):
     
     '''
@@ -39,7 +45,7 @@ class ProfileTestClass(TestCase):
     '''
     
     def setUp(self):
-        self.profile_one = Profile(profile_photo='images/mine.jpg',bio='Currently doing datascience in moringa')
+        self.profile_one = Profile(profile_photo='images/mine.jpg',bio='Currently doing datascience in moringa',user_id=3)
         
         
     def test_instance(self):
@@ -60,7 +66,10 @@ class ProfileTestClass(TestCase):
     def test_update_method(self):
         self.profile_one.save_profile()
         new_bio = '# thursday speaker'
-        done = self.profile_one.update_bio(self.profile_one.id,new_bio)
+        done = self.profile_one.update_bio(self.profile_one.pk,new_bio)
         self.assertEqual(done,new_bio)
+        
+    def tearDown(self):
+        Profile.objects.all().delete()
     
     
