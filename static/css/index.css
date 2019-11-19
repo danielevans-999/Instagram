@@ -3,6 +3,6 @@ body{
     background-color: #4444;
 }
 
-.user{
+.user,.mycom{
     text-transform: capitalize;
 }
